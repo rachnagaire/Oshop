@@ -1,0 +1,475 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+</head>
+
+<body class="page-vertical">
+    <header class="header">
+        <h1 class="sr-only"><span class="sr-only">Oshop</span></h1>
+        <nav class="nav navbar-expand align-items-center">
+            <a href="javascript:" class="nav-band" id="index"> Oshop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <form class="form-inline my-2 my-lg-0 ml-auto">
+                    <div class="search-input">
+                        <i class="  search-icon ri-search-line"></i>
+                        <div class="search-input-item">
+                            <input placeholder="Search..." name="icon-name" type="text">
+                            <button class="close-btn btn"><i class="ri-close-line"></i></button>
+                        </div>
+                    </div>
+
+                </form>
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a href="javascript:" class="nav-link" id="shoppingCart">
+                            <div class="cart">
+                                <span class="cart-icon"><i class="ri-shopping-cart-2-line"></i></span>
+                                <span class="cart-count" id="total__product-quantity"></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown " id="login_user" hidden>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="javascript:" id="myOrders">My Orders</a>
+                            <a class="dropdown-item" href="#" id="manageOrders">Manage Orders</a>
+                            <a class="dropdown-item" href="#" id="manageProducts">Manage Products</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:" id="btn-logout">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-item__signin-signup">
+                        <a href="javascript:" class="nav-link" id="btn-signup">Sign Up</a>
+                    </li>
+
+                    <li class="nav-item nav-item__signin-signup " style="border-left: 2px solid #ccc;">
+
+                        <a href="javascript:" class="nav-link" id="btn-signin">Sign In</a>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <main class="main" role="main" id="main">
+        <section class="section section-home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <ul class="list-group list-custom" id="shop-menu">
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-wrapper" id="product-wrapper">
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class=" section section-shoppingCart">
+            <div class="container">
+                <div class="row">
+                    <h2 class="title w-100">Shopping Cart</h2>
+                    <div class="layout-wrapper">
+                        <div class="layout-header">
+                            <p class="">You have <span id="total-cartQuantity">0</span> items in your shopping cart.</p>
+                            <button class="btn btn-light" id="btn-cart-clear">clear</button>
+                        </div>
+                        <div class="layout-content">
+                            <table class="table table-hover" id="table-shopping-cart">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="">Product</th>
+                                        <th class="">Quantity</th>
+                                        <th class="">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="shopping-cart-list">
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td colspan="">
+                                            <div class="float-right" id="grand-total">Grand Total: $0.00</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <button class="btn btn-primary" id="btn-checkout" hidden>Check out</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-manageOrders section-active">
+            <div class="container">
+                <div class="row">
+                    <h2 class="title w-100 mb-4">Manage Orders</h2>
+                    <div class="layout-wrapper">
+                        <div class="layout-header">
+
+                        </div>
+                        <div class="layout-content">
+                            <table class="table table-hover w-100" id="table-manageOrders">
+                                <thead>
+                                    <tr>
+                                        <th>OrderId</th>
+                                        <th>Customers</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="section section-myOrders ">
+            <div class="container">
+                <div class="row">
+                    <h2 class="title w-100 mb-4">My Orders</h2>
+                    <div class="layout-wrapper">
+                        <div class="layout-header">
+
+                        </div>
+                        <div class="layout-content">
+                            <table class="table table-hover w-100" id="table-myOrders">
+                                <thead>
+                                    <tr>
+                                        <th>Order Id</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="section section-manageProducts">
+            <div class="container">
+                <div class="row">
+                    <div class="w-100"><button type="button" class="btn btn-primary" id="btn-newProducts">New
+                            Product</button></div>
+                    <div class="layout-wrapper">
+                        <div class="layout-header py-3">
+                            <!-- <div>
+                                <div class="search-input">
+                                    <i class="  search-icon ri-search-line"></i>
+                                    <div class="search-input-item">
+                                        <input placeholder="Search..." name="icon-name" type="text">
+                                        <button class="close-btn btn"><i class="ri-close-line"></i></button>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="layout-content">
+                            <table class="table table-hover w-100" id="table-manageProducts">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="section section-newProducts ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="layout-wrapper">
+                        <div class="layout-header py-3">
+
+                        </div>
+                        <div class="layout-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form action="">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" id="product-title">
+                                            <span class="alert alert-danger" hidden></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Price</label>
+                                            <div class="input-group is-invalid">
+                                                <div class="input-group-prepend">
+                                                    <label class="input-group-text"
+                                                        for="validatedInputGroupSelect">$</label>
+                                                </div>
+                                                <input type="number" class="form-control" id="product-price" min="0">
+                                            </div>
+                                            <span class="alert alert-danger" hidden>Enter price...</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Category</label>
+                                            <select name="" class="form-control" id="product-category">
+                                                <option value="0" selected>Choose your category</option>
+                                                <option value="1">Bakery Items</option>
+                                                <option value="2">Dairy items</option>
+                                                <option value="3">Vegetables</option>
+                                                <option value="4">Fruits</option>
+                                                <option value="5">Seasoning and Spices</option>
+                                            </select>
+                                            <span class="alert alert-danger" hidden>Select its category...</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Image Url</label>
+                                            <input type="text" class="form-control" id="product-image">
+                                            <span class="alert alert-danger" hidden>Give Image URL...</span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary px-4" id="btn-productSave"
+                                            disabled>Save</button>
+                                        <button type="button" class="btn btn-outline-danger px-3" id="btn-productDelete"
+                                            hidden>Delete</button>
+
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="content-wrapper border-0">
+                                        <div class="img-wrapper">
+                                            <img src="" alt="" class=" img-responsive img-fluid"
+                                                id="result-productImage">
+                                        </div>
+                                        <div class="py-3 d-flex justify-content-between">
+                                            <div>
+                                                <h5 id="result-productTitle"></h5>
+                                                <small id="result-productCategory"></small>
+                                            </div>
+                                            <h5 id="result-productPrice"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="section section-checkoutProducts ">
+            <div class="container">
+                <div class="row">
+
+                    <div class="layout-wrapper">
+                        <div class="layout-header py-3">
+                            <h2>Shipping</h2>
+                        </div>
+                        <div class="layout-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form action="">
+                                        <div class="form-group">
+                                            <label for="title">Name</label>
+                                            <input type="text" class="form-control" id="shipping-name">
+                                            <span class="alert alert-danger validationMessage" hidden>Enter your
+                                                name...</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Address</label>
+                                            <input type="text" class="form-control mb-2" id="shipping-address1">
+                                            <input type="text" class="form-control" id="shipping-address2">
+                                            <span class="alert alert-danger validationMessage" hidden>Enter your
+                                                address...</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">City</label>
+                                            <input type="text" class="form-control" id="shipping-city">
+                                            <span class="alert alert-danger validationMessage" hidden>Enter your
+                                                city...</span>
+                                        </div>
+
+                                        <button type="button" class="btn btn-primary" id="btn-pay" disabled>Pay</button>
+
+                                    </form>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="content-wrapper">
+                                        <div class="content-summary">
+                                            <h4>Order Summary</h4>
+                                            <p>You have <span id="total-checkoutQuantity">0</span> item in your shopping
+                                                cart. </p>
+                                        </div>
+                                        <ul class="list-group list-group-flush" id="shipping-order">
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <section class="section section-orderSuccess ">
+            <div class="mx-auto w-50 shadow rounded p-5 text-center my-5">
+                <div class="icon text-success"> <i class="ri-check-line ri-3x"></i></div>
+                <h1>Thank you!</h1>
+                <p>We received your order and will process it within the next 24 hours!</p>
+            </div>
+        </section>
+        <section class="section section-orderView">
+            <div class=" container">
+
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <h3 class="mb-4">Order Summary</h3>
+                        <ul class="list-group-items pl-0" id="orderSummary-View">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="border-top bg-light mt-4">
+        <div class="d-flex align-items-center justify-content-center small py-2">
+            <p class="mb-0">Copyright @ oshop | All rights reserved.</p>
+        </div>
+    </footer>
+    <div class="page-horizontal pg-signin" hidden>
+        <div class="side-banner">
+            <div class="close" id="btn-backtoHome"><i class="ri-arrow-left-line"></i></div>
+            <h1> OSHOP</h1>
+        </div>
+        <div class="form-layout ml-auto d-flex flex-column pt-5 w-50">
+            <form action="" class="form-login mt-5 px-5">
+                <span class="alert alert-danger" id="invalid-summary" hidden>
+
+                </span>
+                <h3>Login</h3>
+                <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" id="username-signin" class="form-control">
+                    <span class="alert alert-danger" id="alert-username-signin" hidden></span>
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" id="password-signin" class="form-control">
+                    <span class="alert alert-danger" id="alert-password-signin" hidden></span>
+
+                </div>
+                <button type="button" class="btn btn-primary " id="btn-signIn">Sign In</button>
+            </form>
+        </div>
+    </div>
+    <div class="page-horizontal pg-signup" hidden>
+        <div class="side-banner">
+            <div class="close" id="btnBacktoHome"><i class="ri-arrow-left-line"></i></div>
+            <h1> OSHOP</h1>
+        </div>
+        <div class="form-layout ml-auto d-flex flex-column pt-5 w-50">
+            <form action="" class="form-login mt-5 px-5">
+                <h3 class="title">Signup</h3>
+                <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" id="username-signup" class="form-control">
+                    <span class="alert alert-danger" hidden></span>
+                </div>
+                <div class="form-group">
+                    <label for="">Create Password</label>
+                    <input type="password" id="create-password" class="form-control">
+                    <span class="alert alert-danger" hidden></span>
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password</label>
+                    <input type="password" id="confirm-password" class="form-control">
+                    <span class="alert alert-danger" hidden></span>
+
+                </div>
+                <button type="button" class="btn btn-primary " id="btn-signUp">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./assets/js/dashboard.js"></script>
+    <script src="./assets/js/dataTable.js"></script>
+    <script src="./assets/js/route.js"></script>
+    <script src="./assets/js/data.js"></script>
+    <script src="./assets/js/service.js"></script>
+    <script src="./assets/js/validation.js"></script>
+    <script src="./assets/js/product.js"></script>
+    <script src="./assets/js/shoppingcart.js"></script>
+    <script src="./assets/js/checkout.js"></script>
+    <script src="./assets/js/order.js"></script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="./assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./assets/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
+
+
+</body>
+
+</html>

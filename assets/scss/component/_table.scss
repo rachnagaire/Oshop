@@ -1,0 +1,22 @@
+
+.table{
+    thead{
+        th{
+            padding: 1rem 1.5rem;
+            &:last-child{
+            text-align: right;
+        }
+        }
+        
+    }
+    tbody{
+        td{
+            padding: 1rem 1.5rem;
+        }
+        tr{
+            td:last-child{
+                text-align: right;
+            }
+        }
+    }
+}

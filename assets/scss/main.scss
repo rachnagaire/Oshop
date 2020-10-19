@@ -1,0 +1,21 @@
+
+@import "./base/variable";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+
+@import "./page/index";
+
+
+@import "./layout/header";
+@import "./layout/main";
+
+
+
+@import "./component/form";
+@import "./component/card";
+@import "./component/list";
+@import "./component/table";
+@import "./component/banner";
+
+

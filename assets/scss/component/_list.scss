@@ -1,0 +1,28 @@
+.list-custom{
+    .list-group-item {
+    cursor: pointer;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-top-width: 1px !important;
+    transition: all 0.3s ease;
+    border-radius: 0.4rem !important;
+    &:hover,&.active{
+        background: #ff9e25;
+        box-shadow: 1px 2px 40px rgba(0,0,0,0.12);
+        border: none;
+        color: #fff;
+        margin-left: 0.5rem;
+        transition: all 0.3s ease;
+        &:before{
+            content: "";
+            width: 2px;
+            height: 100%;
+            background-color: #ff9e25;
+            position: absolute;
+            top: 0;
+            left: -0.5rem;
+                transition: all 0.3s ease;
+        }
+    }
+}
+}
