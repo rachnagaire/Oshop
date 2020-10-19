@@ -291,7 +291,7 @@ function addInformation() {
     var user = {
         userId: randomValue.toString(),
         username: username,
-        Password: password
+        password: password
     }
 
     users.push(user);
